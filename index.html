@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Carbon Footprint — Research, Prototype &amp; Trackers</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌿</text></svg>">
+  <style>
+    :root {
+      --bg-1: #0d1218;
+      --glass: rgba(255,255,255,0.045);
+      --glass-strong: rgba(255,255,255,0.075);
+      --glass-border: rgba(255,255,255,0.09);
+      --ink: #edf1f6;
+      --muted: #8992a6;
+      --muted-2: #5d6478;
+      --accent: #35d0a6;
+      --accent-ink: #06251c;
+      --scope1: #35d0a6;
+      --scope2: #6c8cff;
+      --scope3: #f2a93c;
+      --line: rgba(255,255,255,0.09);
+      color-scheme: dark;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background:
+        radial-gradient(1000px 650px at 90% -8%, rgba(108,140,255,0.16), transparent 55%),
+        radial-gradient(800px 550px at -8% 12%, rgba(53,208,166,0.13), transparent 55%),
+        radial-gradient(700px 500px at 50% 100%, rgba(242,169,60,0.06), transparent 60%),
+        var(--bg-1);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    ::selection { background: var(--accent); color: var(--accent-ink); }
+    a { color: inherit; text-decoration: none; }
+    .num { font-family: ui-monospace, "SF Mono", "Cascadia Mono", "Consolas", monospace; font-variant-numeric: tabular-nums; }
+    h1, h2, h3 { font-family: Georgia, "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif; font-weight: 400; text-wrap: balance; }
+
+    .wrap { max-width: 1040px; margin: 0 auto; padding: 4rem 1.5rem 5rem; }
+
+    .eyebrow {
+      font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 1rem;
+    }
+    h1 {
+      font-size: clamp(2.2rem, 5.2vw, 3.4rem);
+      margin: 0 0 0.6rem; letter-spacing: -0.01em;
+    }
+    .lede {
+      font-size: 1.05rem; color: var(--muted); max-width: 60ch; margin: 0 0 3rem;
+    }
+
+    .section-label {
+      font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--scope1); font-weight: 700; margin-bottom: 1rem;
+    }
+    .section-note {
+      color: var(--muted); font-size: 0.9rem; max-width: 62ch; margin: 0 0 1.4rem;
+    }
+
+    .card-row {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.1rem;
+      margin-bottom: 3rem;
+    }
+    @media (max-width: 720px) { .card-row { grid-template-columns: 1fr; } }
+
+    .card {
+      background: var(--glass); border: 1px solid var(--glass-border);
+      border-radius: 14px; padding: 1.6rem 1.7rem;
+      backdrop-filter: blur(14px);
+      display: flex; flex-direction: column; gap: 0.75rem;
+      transition: border-color 0.15s, transform 0.15s;
+    }
+    .card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .card:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+    .card-tag {
+      font-size: 0.66rem; letter-spacing: 0.09em; text-transform: uppercase;
+      color: var(--muted-2); font-weight: 700;
+    }
+    .card h3 {
+      font-size: 1.35rem; margin: 0; color: var(--ink); font-weight: 400;
+    }
+    .card p {
+      color: var(--muted); font-size: 0.92rem; margin: 0; flex: 1;
+    }
+    .card-arrow {
+      color: var(--accent); font-weight: 700; font-size: 0.88rem;
+      margin-top: 0.4rem;
+    }
+
+    .primary-set .card { padding: 2rem 2rem; }
+    .primary-set .card h3 { font-size: 1.6rem; }
+    .primary-set .card-tag { color: var(--accent); }
+
+    .footer {
+      margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid var(--line);
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.78rem; color: var(--muted-2); flex-wrap: wrap; gap: 0.8rem;
+    }
+    .footer a { color: var(--accent); }
+    .footer a:hover { text-decoration: underline; }
+
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Internal Research &amp; Prototype · VSQC</div>
+  <h1>Carbon Footprint</h1>
+  <p class="lede">Research report, working prototype, and companion trackers — built alongside the SystemETA platform to explore a standalone carbon accounting product.</p>
+
+  <div class="section-label">Primary Deliverables</div>
+  <p class="section-note">Prepared for management review — a research report proposing a standalone Carbon Footprint application, and a working prototype covering Phase 1 &amp; 2 of the roadmap.</p>
+  <div class="card-row primary-set">
+    <a class="card" href="carbon-report.html">
+      <span class="card-tag">Report</span>
+      <h3>Research &amp; Module Plan</h3>
+      <p>Scope 1/2/3 framework, audit of the current SystemETA module, the proposed 8-module architecture, AI feature roadmap, and a 3-phase build plan.</p>
+      <span class="card-arrow">Read the report →</span>
+    </a>
+    <a class="card" href="carbon-mvp.html">
+      <span class="card-tag">Prototype</span>
+      <h3>Phase 1 + 2 Application</h3>
+      <p>Working demo: organisation setup, Scope 1/2/3 activity engine, supplier questionnaire portal, CSV &amp; ERP import, BRSR Core and GHG Protocol exports.</p>
+      <span class="card-arrow">Open the app →</span>
+    </a>
+  </div>
+
+  <div class="section-label">Companion Trackers</div>
+  <p class="section-note">Two lightweight consumer-facing tools built along the way — useful for validating the calculation engine and demonstrating the same emission-factor logic in a simpler UI.</p>
+  <div class="card-row">
+    <a class="card" href="carbon-ledger.html">
+      <span class="card-tag">Personal</span>
+      <h3>Carbon Ledger</h3>
+      <p>Everyday footprint tracker across transport, home energy, food, and goods — with a 14-day trend and benchmark gauge against global averages.</p>
+      <span class="card-arrow">Open →</span>
+    </a>
+    <a class="card" href="foodprint.html">
+      <span class="card-tag">Food only</span>
+      <h3>Foodprint</h3>
+      <p>Log meals by food group, see the carbon behind each one, and get a daily swap suggestion — e.g. beef → chicken saving X kg CO₂e.</p>
+      <span class="card-arrow">Open →</span>
+    </a>
+  </div>
+
+  <div class="footer">
+    <span>Prepared by Priyansh · Intern, VSQC · July 2026</span>
+    <a href="https://github.com/priyansh727/carbon-footprint-site" target="_blank" rel="noopener">Source on GitHub ↗</a>
+  </div>
+</div>
+</body>
+</html>
